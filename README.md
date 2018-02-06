@@ -1,5 +1,5 @@
 # http-auth-listener
-a command-line http listener with basic authentication
+a command-line http listener with optional basic authentication checking.
 
 ## Usage
 
