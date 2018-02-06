@@ -14,7 +14,7 @@ a command-line http listener with basic authentication
 	-b, --body     Print event body (default: no)
 	-h, --headers  Print event headers (default: no)
 
-	--help         Print help and exit.',
+	--help         Print help and exit
 #### Example:
 	node bin/http-auth-listener --port=7770 --rcode=404 -u user@domain -p secret -bh
 
@@ -29,5 +29,5 @@ Copy this repository locally, then in the http-auth-listener directory run:
 
 ## Running
 ```sh
-> node bin/http-auth-listener
+> node bin/http-auth-listener -bh
 ``` 
