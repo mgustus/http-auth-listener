@@ -1,0 +1,36 @@
+{
+  "name": "http-auth-listener",
+  "version": "1.0.0",
+  "description": "command-line http listener with basic authentication",
+  "main": "./lib/http-auth-listener",
+  "keywords": [
+    "http",
+    "listener",
+    "basic authentication"
+  ],
+  "scripts": {
+    "start": "node ./bin/octane-listener"
+  },
+  "files": [
+    "lib",
+    "bin"
+  ],
+  "contributors": [
+    {
+      "name": "Michael Gustus",
+      "email": "michael.gustus@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "colors": "1.1.2",
+    "optimist": "0.6.x",
+    "portfinder": "^1.0.13",
+    "basic-auth": "^2.0.0",
+    "cliui": "^4.0.0",
+    "moment": "^2.20.1"
+  },
+  "license": "MIT",
+  "bin": {
+    "http-auth-listener": "./bin/http-auth-listener"
+  }
+}

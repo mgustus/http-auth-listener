@@ -1,0 +1,64 @@
+const colors     = require('colors/safe'),
+      HttpServer = require('../lib/http-server'),
+      argv       = require('optimist').argv;
+
+if (argv.help) {
+  console.log([
+    '\nUsage: http-auth-listener [options]',
+    '',
+    'Options:',
+    '  --port         Port to use (default: 8080)',
+    '  --rcode        Response status code (default: 200)',
+    '  -u             Username for basic authentication (default: none)',
+    '  -p             Password for basic authentication (default: none)',
+    '',
+    '  -b, --body     Print event body (default: no)',
+    '  -h, --headers  Print event headers (default: no)',
+    '',
+    '  --help         Print this list and exit.',
+    '',
+    'Example:',
+    'http-auth-listener --port=7770 --rcode=404 -u user@domain -p secret -bh'
+  ].join('\n'));
+  process.exit();
+} else {
+	console.log('For more options run: http-auth-listener --help\n');
+}
+
+const logger = {
+	info: console.log,
+	error: console.error
+};
+
+const options = {
+	port: argv.port || parseInt(process.env.PORT, 10),
+	statusCode: argv.rcode || 200,
+	user: argv.u,
+	pass: argv.p,
+	logBody: !!argv.b || !!argv.body,
+	logHeaders: !!argv.h || !!argv.headers
+};
+
+const httpServer = new HttpServer(logger, options);
+httpServer.listen();
+
+
+
+// Termination //
+/////////////////
+if (process.platform === 'win32') {
+  require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+  }).on('SIGINT', () => process.emit('SIGINT'));
+}
+
+process.on('SIGINT', () => {
+  logger.info(colors.red('http-auth-listener stopped.'));
+  process.exit();
+});
+
+process.on('SIGTERM', () => {
+  logger.info(colors.red('http-auth-listener stopped.'));
+  process.exit();
+});
