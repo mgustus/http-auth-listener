@@ -11,8 +11,8 @@ a command-line http listener with optional basic authentication checking.
 	-u             Username for basic authentication (default: none)
 	-p             Password for basic authentication (default: none)
 
-	-b, --body     Print event body (default: no)
-	-h, --headers  Print event headers (default: no)
+	-b, --body     Print request body (default: no)
+	-h, --headers  Print request headers (default: no)
 
 	--help         Print help and exit
 #### Example:
